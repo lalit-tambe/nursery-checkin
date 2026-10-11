@@ -7,13 +7,13 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class OccupantResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @return array<string, mixed>
-     */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'check_in_id' => $this->id,
+            'child_id' => $this->child_id,
+            'child_name' => $this->child->name,
+            'checked_in_at' => $this->checked_in_at->toIso8601String(),
+        ];
     }
 }
